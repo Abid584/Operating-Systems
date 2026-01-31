@@ -1,5 +1,6 @@
 #include "BoundedBuffer.h"
 #include <iostream>
+using namespace std;
 
 BoundedBuffer::BoundedBuffer(int size) : capacity(size) {
     sem_init(&empty, 0, size);
@@ -18,9 +19,9 @@ void BoundedBuffer::insert(const Process& process) {
     
     pthread_mutex_lock(&mutex);
     buffer.push(process);
-    std::cout << "[PRODUCER] Inserted Process P" << process.processID 
+    cout << "[PRODUCER] Inserted Process P" << process.processID 
               << " (Priority: " << process.priority 
-              << ", Burst: " << process.burstTime << ")" << std::endl;
+              << ", Burst: " << process.burstTime << ")" << endl;
     pthread_mutex_unlock(&mutex);
     
     sem_post(&full);
@@ -32,8 +33,8 @@ Process BoundedBuffer::remove() {
     pthread_mutex_lock(&mutex);
     Process process = buffer.front();
     buffer.pop();
-    std::cout << "[CONSUMER] Removed Process P" << process.processID 
-              << " from buffer" << std::endl;
+    cout << "[CONSUMER] Removed Process P" << process.processID 
+              << " from buffer" << endl;
     pthread_mutex_unlock(&mutex);
     
     sem_post(&empty);
