@@ -5,10 +5,10 @@
 #include <semaphore.h>
 #include <pthread.h>
 #include "Process.h"
-
+using namespace std;
 class BoundedBuffer {
 private:
-    std::queue<Process> buffer;
+    queue<Process> buffer;
     int capacity;
     
     // Semaphores for synchronization
