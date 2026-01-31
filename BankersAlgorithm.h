@@ -4,24 +4,25 @@
 #include <vector>
 #include <pthread.h>
 #include "Process.h"
+using namespace std;
 
 class BankersAlgorithm {
 private:
     int numResources;
-    std::vector<int> available;      // Available resources
-    std::vector<int> maxResources;   // Total resources in system
-    std::vector<Process*> processes; // All processes
-    std::vector<int> safeSequence;   // Last computed safe sequence
-    std::vector<int> blockedProcesses; // Blocked process IDs
+    vector<int> available;      // Available resources
+    vector<int> maxResources;   // Total resources in system
+    vector<Process*> processes; // All processes
+    vector<int> safeSequence;   // Last computed safe sequence
+    vector<int> blockedProcesses; // Blocked process IDs
     
     pthread_mutex_t resourceMutex;
     
     // Helper functions
-    bool isSafe(const std::vector<int>& tempAvailable);
-    bool canAllocate(const Process& p, const std::vector<int>& tempAvailable);
+    bool isSafe(const vector<int>& tempAvailable);
+    bool canAllocate(const Process& p, const vector<int>& tempAvailable);
     
 public:
-    BankersAlgorithm(int numResourceTypes, const std::vector<int>& totalResources);
+    BankersAlgorithm(int numResourceTypes, const vector<int>& totalResources);
     ~BankersAlgorithm();
     
     // Check if resource allocation is safe
@@ -34,10 +35,10 @@ public:
     void displaySystemState();
     
     // Get safe sequence
-    std::vector<int> getSafeSequence() const;
+    vector<int> getSafeSequence() const;
     
     // Get blocked processes
-    std::vector<int> getBlockedProcesses() const;
+    vector<int> getBlockedProcesses() const;
     
     // Add process to system
     void addProcess(Process* process);
