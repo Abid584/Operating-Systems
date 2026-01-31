@@ -4,15 +4,16 @@
 #include <vector>
 #include "Process.h"
 #include "BankersAlgorithm.h"
+using namespace std;
 
 class Scheduler {
 private:
-    std::vector<Process*> processes;
-    std::vector<GanttEntry> ganttChart;
+    vector<Process*> processes;
+    vector<GanttEntry> ganttChart;
     int timeQuantum;
     BankersAlgorithm* banker;
     
-    std::vector<int> getReadyProcesses(int currentTime, std::vector<bool>& completed);
+    vector<int> getReadyProcesses(int currentTime, vector<bool>& completed);
     void priorityScheduling();
     void roundRobinScheduling();
     
@@ -30,7 +31,7 @@ public:
     void displayStatistics();
     
     int getProcessCount();
-    std::vector<Process*>& getProcesses();
+    vector<Process*>& getProcesses();
 };
 
 #endif
