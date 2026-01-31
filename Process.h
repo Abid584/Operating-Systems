@@ -2,6 +2,7 @@
 #define PROCESS_H
 
 #include <vector>
+using namespace std;
 
 // Structure to represent a Process
 struct Process {
@@ -9,8 +10,8 @@ struct Process {
     int arrivalTime;
     int burstTime;
     int priority;
-    std::vector<int> resourceRequirements;  // Max resources needed
-    std::vector<int> allocatedResources;     // Currently allocated
+    vector<int> resourceRequirements;  // Max resources needed
+    vector<int> allocatedResources;     // Currently allocated
     
     // For scheduling calculations
     int remainingTime;
